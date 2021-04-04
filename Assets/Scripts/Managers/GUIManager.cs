@@ -35,7 +35,7 @@ public class GUIManager : MonoBehaviour {
 	public Text moveCounterTxt;
 
 
-	public int moveCounter = 50;
+	public int moveCounter = 10;
 	public int moveCounterBonus = 1;
 	public int scorePerMatch = 5;
 
@@ -71,7 +71,8 @@ public class GUIManager : MonoBehaviour {
 			if (moveCounter <= 0)
 			{
 				moveCounter = 0;
-				StartCoroutine(WaitForShifting());
+				//StartCoroutine(WaitForShifting());
+				GameOver();
 			}
 
 		}

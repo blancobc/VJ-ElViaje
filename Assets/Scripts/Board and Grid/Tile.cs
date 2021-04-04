@@ -63,7 +63,8 @@ public class Tile : MonoBehaviour {
 
     void OnMouseDown()
 	{
-		
+		if(GameManager.instance.gameOver == true) return;
+
 		if (render.sprite == null || BoardManager.instance.IsShifting)
 		{
 			return;

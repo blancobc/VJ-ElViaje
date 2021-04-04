@@ -40,7 +40,7 @@ public class BoardManager : MonoBehaviour {
 
 	void Start () {
 		instance = GetComponent<BoardManager>();
-
+		GameManager.instance.gameOver = false;
 		Vector2 offset = tile.GetComponent<SpriteRenderer>().bounds.size;
 		CreateBoard(offset.x, offset.y);
     }

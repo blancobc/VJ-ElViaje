@@ -477,6 +477,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 122910, guid: 6a2e44e682f3ea5469046c0ccfa27945, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 193498, guid: 6a2e44e682f3ea5469046c0ccfa27945, type: 3}
       propertyPath: m_Name
       value: GUIManagerCanvas
