@@ -349,7 +349,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'Best: 0'
+  m_Text: 'Mejor: 0'
 --- !u!114 &114000010837125676
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -580,6 +580,9 @@ MonoBehaviour:
   highScoreTxt: {fileID: 11437370}
   scoreTxt: {fileID: 11485300}
   moveCounterTxt: {fileID: 114000012414310656}
+  moveCounter: 20
+  moveCounterBonus: 1
+  scorePerMatch: 5
 --- !u!1 &1000010228775672
 GameObject:
   m_ObjectHideFlags: 0
@@ -646,7 +649,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: e16c2fef59001794fac394c559efe8c3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8f56cf7c9d2d247f8beaeee3bb48ae18, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -925,7 +928,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Play
+  m_Text: Jugar
 --- !u!114 &114000014084042562
 MonoBehaviour:
   m_ObjectHideFlags: 0

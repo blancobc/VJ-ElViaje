@@ -30,8 +30,11 @@ public class BoardManager : MonoBehaviour {
 	public GameObject tile;
 	public int xSize, ySize;
 
-	
+	public Color selectedColor = new Color(.5f, .5f, .5f, 1.0f);
+	public Color adjacentColor = new Color(.5f, .5f, .5f, 1.0f);
+
 	private GameObject[,] tiles;
+
 
 	public bool IsShifting { get; set; }
 
@@ -120,6 +123,12 @@ public class BoardManager : MonoBehaviour {
 		{
 			GUIManager.instance.Score += GUIManager.instance.scorePerMatch;
 			yield return new WaitForSeconds(shiftDelay);
+
+			if (renders.Count == 1)
+			{
+				renders[0].sprite = GetNewSprite(x, ySize - 1);
+			}
+
 			for (int k = 0; k < renders.Count - 1; k++)
 			{ 
 				renders[k].sprite = renders[k + 1].sprite;
@@ -149,5 +158,19 @@ public class BoardManager : MonoBehaviour {
 
 		return possibleCharacters[Random.Range(0, possibleCharacters.Count)];
 	}
+
+
+
+	public void RemoveColor()
+	{
+		for (int x = 0; x < xSize; x++)
+		{
+			for (int y = 0; y < ySize; y++)
+			{
+				tiles[x, y].GetComponent<SpriteRenderer>().color = Color.white;
+			}
+		}
+	}
+
 
 }

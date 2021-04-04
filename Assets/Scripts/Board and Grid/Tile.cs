@@ -25,7 +25,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class Tile : MonoBehaviour {
-	private static Color selectedColor = new Color(.5f, .5f, .5f, 1.0f);
+
 	private static Tile previousSelected = null;
 
 	private SpriteRenderer render;
@@ -41,7 +41,15 @@ public class Tile : MonoBehaviour {
 
 	private void Select() {
 		isSelected = true;
-		render.color = selectedColor;
+		render.color = BoardManager.instance.selectedColor;
+		List<GameObject> adjacents = GetAllAdjacentTiles();
+		foreach(GameObject ob in adjacents)
+        {
+			if(ob != null)
+			ob.GetComponent<SpriteRenderer>().color = BoardManager.instance.adjacentColor;
+		}
+
+
 		previousSelected = gameObject.GetComponent<Tile>();
 		SFXManager.instance.PlaySFX(Clip.Select);
 	}
@@ -49,6 +57,7 @@ public class Tile : MonoBehaviour {
 	private void Deselect() {
 		isSelected = false;
 		render.color = Color.white;
+		BoardManager.instance.RemoveColor();
 		previousSelected = null;
     }
 

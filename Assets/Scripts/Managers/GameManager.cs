@@ -111,17 +111,8 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void ExitGame() {
-		// If we are running in a standalone build of the game
-		#if UNITY_STANDALONE
-			// Quit the application
-			Application.Quit();
-		#endif
+		Application.Quit();
 
-		// If we are running in the editor
-		#if UNITY_EDITOR
-			// Stop playing the scene
-			UnityEditor.EditorApplication.isPlaying = false;
-		#endif
 	}
 
 	private bool isReturning = false;

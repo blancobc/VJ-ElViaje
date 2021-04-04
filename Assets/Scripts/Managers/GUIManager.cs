@@ -92,9 +92,9 @@ public class GUIManager : MonoBehaviour {
 
 		if (score > PlayerPrefs.GetInt("HighScore")) {
 			PlayerPrefs.SetInt("HighScore", score);
-			highScoreTxt.text = "New Best: " + PlayerPrefs.GetInt("HighScore").ToString();
+			highScoreTxt.text = "Nuevo record: " + PlayerPrefs.GetInt("HighScore").ToString();
 		} else {
-			highScoreTxt.text = "Best: " + PlayerPrefs.GetInt("HighScore").ToString();
+			highScoreTxt.text = "Mejor: " + PlayerPrefs.GetInt("HighScore").ToString();
 		}
 
 		yourScoreTxt.text = score.ToString();
