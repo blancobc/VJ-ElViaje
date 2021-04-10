@@ -38,14 +38,16 @@ public class BoardManager : MonoBehaviour {
 
 	public bool IsShifting { get; set; }
 
-	void Start () {
+	void Start ()
+	{
 		instance = GetComponent<BoardManager>();
 		GameManager.instance.gameOver = false;
 		Vector2 offset = tile.GetComponent<SpriteRenderer>().bounds.size;
 		CreateBoard(offset.x, offset.y);
     }
 
-	private void CreateBoard (float xOffset, float yOffset) {
+	private void CreateBoard (float xOffset, float yOffset)
+	{
 		tiles = new GameObject[xSize, ySize];
 
         float startX = transform.position.x;
@@ -56,7 +58,7 @@ public class BoardManager : MonoBehaviour {
 
 		for (int x = 0; x < xSize; x++) {
 			for (int y = 0; y < ySize; y++) {
-				GameObject newTile = Instantiate(tile, new Vector3(startX + (xOffset * x), startY + (yOffset * y), 0), tile.transform.rotation);
+				GameObject newTile = Instantiate(tile, new Vector3(startX + (xOffset * x) + (xOffset/2), startY + (yOffset * y), 0), tile.transform.rotation);
 				tiles[x, y] = newTile;
 
 				newTile.transform.parent = transform;

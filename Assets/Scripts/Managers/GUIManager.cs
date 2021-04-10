@@ -23,24 +23,20 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System.Collections.Generic;
+
 
 public class GUIManager : MonoBehaviour {
 	public static GUIManager instance;
 
-	public GameObject gameOverPanel;
-	public Text yourScoreTxt;
-	public Text highScoreTxt;
-
 	public Text scoreTxt;
 	public Text moveCounterTxt;
-
 
 	public int moveCounter = 10;
 	public int moveCounterBonus = 1;
 	public int scorePerMatch = 5;
 
     private int score;
-
 
 	public int Score
 	{
@@ -71,7 +67,6 @@ public class GUIManager : MonoBehaviour {
 			if (moveCounter <= 0)
 			{
 				moveCounter = 0;
-				//StartCoroutine(WaitForShifting());
 				GameOver();
 			}
 
@@ -87,28 +82,13 @@ public class GUIManager : MonoBehaviour {
 
 	// Show the game over panel
 	public void GameOver() {
+
 		GameManager.instance.gameOver = true;
 
-		gameOverPanel.SetActive(true);
+		PlayerPrefs.SetInt("Score", score);
 
-		if (score > PlayerPrefs.GetInt("HighScore")) {
-			PlayerPrefs.SetInt("HighScore", score);
-			highScoreTxt.text = "Nuevo record: " + PlayerPrefs.GetInt("HighScore").ToString();
-		} else {
-			highScoreTxt.text = "Mejor: " + PlayerPrefs.GetInt("HighScore").ToString();
-		}
+		GameManager.instance.LoadScene("GameOver");
 
-		yourScoreTxt.text = score.ToString();
-	}
-
-	private IEnumerator WaitForShifting()
-	{
-		yield return new WaitUntil(() => !BoardManager.instance.IsShifting);
-
-        if (moveCounter <= 0) { 
-			yield return new WaitForSeconds(.25f);
-			GameOver();
-			}
 	}
 
 

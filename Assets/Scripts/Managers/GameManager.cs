@@ -24,6 +24,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Collections;
+using System.Collections.Generic;
+
 
 public class GameManager : MonoBehaviour {
 	public static GameManager instance;
@@ -38,6 +40,9 @@ public class GameManager : MonoBehaviour {
 	private string currentScene;
 	private AsyncOperation async;
 
+
+
+
 	void Awake() {
 		// Only 1 Game Manager can exist at a time
 		if (instance == null) {
@@ -49,7 +54,7 @@ public class GameManager : MonoBehaviour {
 		}
 	}
 
-	void Update() {
+    void Update() {
 		if (Input.GetKeyDown(KeyCode.Escape)) {
 			ReturnToMenu();
 		}
@@ -127,5 +132,6 @@ public class GameManager : MonoBehaviour {
 			isReturning = true;
         }
 	}
+
 
 }

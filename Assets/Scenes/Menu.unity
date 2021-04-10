@@ -485,10 +485,30 @@ PrefabInstance:
       propertyPath: m_Transition
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1662639216, guid: 5c55d6b169136be438c65bd97e4f3a67, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1662639216, guid: 5c55d6b169136be438c65bd97e4f3a67, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 1662639216, guid: 5c55d6b169136be438c65bd97e4f3a67, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GameManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1662639216, guid: 5c55d6b169136be438c65bd97e4f3a67, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: Leaderboard
+      objectReference: {fileID: 0}
     - target: {fileID: 1662639217, guid: 5c55d6b169136be438c65bd97e4f3a67, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 2c1088abe0cff4c8c9aab710eb16b2d1, type: 3}
+    - target: {fileID: 1000013315979238, guid: 5c55d6b169136be438c65bd97e4f3a67, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 114000010028875874, guid: 5c55d6b169136be438c65bd97e4f3a67, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -505,6 +525,14 @@ PrefabInstance:
       propertyPath: minScale.z
       value: 0.3
       objectReference: {fileID: 0}
+    - target: {fileID: 114000011935413962, guid: 5c55d6b169136be438c65bd97e4f3a67, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011935413962, guid: 5c55d6b169136be438c65bd97e4f3a67, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 2d6921cb0fca74449adaa1167e12a525, type: 3}
     - target: {fileID: 114000013070421562, guid: 5c55d6b169136be438c65bd97e4f3a67, type: 3}
       propertyPath: m_Transition
       value: 0
