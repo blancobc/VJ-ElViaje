@@ -2,6 +2,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 
 public class BoardManager : MonoBehaviour {
 	public static BoardManager instance;
@@ -84,7 +85,7 @@ public class BoardManager : MonoBehaviour {
 
 	}
 
-	private IEnumerator ShiftTilesDown(int x, int yStart, float shiftDelay = .03f)
+	private IEnumerator ShiftTilesDown(int x, int yStart, float shiftDelay = .3f)
 	{
 		IsShifting = true;
 		List<SpriteRenderer> renders = new List<SpriteRenderer>();

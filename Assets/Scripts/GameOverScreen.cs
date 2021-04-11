@@ -18,8 +18,7 @@ public class GameOverScreen : MonoBehaviour
 	{
 		pintarPuntuaciones();
 
-		//TODO quitar
-		PlayerPrefs.DeleteAll();
+		//PlayerPrefs.DeleteAll();
 		// obtener el nombre del jugador
 		string name = PlayerPrefs.GetString("name");
 		
