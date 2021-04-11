@@ -49,7 +49,6 @@ public class Tile : MonoBehaviour {
 			ob.GetComponent<SpriteRenderer>().color = BoardManager.instance.adjacentColor;
 		}
 
-
 		previousSelected = gameObject.GetComponent<Tile>();
 		SFXManager.instance.PlaySFX(Clip.Select);
 	}
@@ -90,6 +89,8 @@ public class Tile : MonoBehaviour {
 					previousSelected.ClearAllMatches();
 					previousSelected.Deselect();
 					ClearAllMatches();
+					GUIManager.instance.MoveCounter--;
+
 				}
 				else
 				{
@@ -112,7 +113,7 @@ public class Tile : MonoBehaviour {
 		Sprite tempSprite = render2.sprite; 
 		render2.sprite = render.sprite; 
 		render.sprite = tempSprite;
-		GUIManager.instance.MoveCounter--;
+		//GUIManager.instance.MoveCounter--;
 		SFXManager.instance.PlaySFX(Clip.Swap); 
 	}
 

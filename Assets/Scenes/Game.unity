@@ -256,7 +256,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 13c1e31afcfba4fdfaac7f16142c2b21, type: 3}
   tile: {fileID: 1000010131827792, guid: 6417c2a8214b7ab45b35ac5e9e62c2cb, type: 3}
   xSize: 6
-  ySize: 11
+  ySize: 10
   selectedColor: {r: 0.4523407, g: 0.76888216, b: 0.8962264, a: 1}
   adjacentColor: {r: 0.89019614, g: 0.70980394, b: 0.18039216, a: 1}
 --- !u!4 &708380241
