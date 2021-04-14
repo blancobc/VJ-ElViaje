@@ -13,7 +13,7 @@ public class BoardManager : MonoBehaviour {
 	public Color selectedColor = new Color(.5f, .5f, .5f, 1.0f);
 	public Color adjacentColor = new Color(.5f, .5f, .5f, 1.0f);
 
-	private GameObject[,] tiles;
+	public GameObject[,] tiles;
 
 
 	public bool IsShifting { get; set; }
@@ -24,7 +24,16 @@ public class BoardManager : MonoBehaviour {
 		GameManager.instance.gameOver = false;
 		Vector2 offset = tile.GetComponent<SpriteRenderer>().bounds.size;
 		CreateBoard(offset.x, offset.y);
+
+		InvokeRepeating("LimpiarNulos", 2f, 1f);
+
+
     }
+
+	private void LimpiarNulos() {
+		StopCoroutine(BoardManager.instance.FindNullTiles());
+		StartCoroutine(BoardManager.instance.FindNullTiles());
+	}
 
 	private void CreateBoard (float xOffset, float yOffset)
 	{
@@ -39,17 +48,24 @@ public class BoardManager : MonoBehaviour {
 		for (int x = 0; x < xSize; x++) {
 			for (int y = 0; y < ySize; y++) {
 				GameObject newTile = Instantiate(tile, new Vector3(startX + (xOffset * x) + (xOffset/2), startY + (yOffset * y) + (yOffset/2), 0), tile.transform.rotation);
+				newTile.GetComponent<Tile>().x = x;
+				newTile.GetComponent<Tile>().y = y;
 				tiles[x, y] = newTile;
 
 				newTile.transform.parent = transform;
 
 				List<Sprite> possibleCharacters = new List<Sprite>();
-				possibleCharacters.AddRange(characters); 
+                if (GUIManager.instance.charactersUnlocked <= characters.Count) { 
+					possibleCharacters.AddRange(characters.GetRange(0, GUIManager.instance.charactersUnlocked));
+				}
+				else { 
+					possibleCharacters.AddRange(characters);
+				}
+
 				possibleCharacters.Remove(previousLeft[y]); 
 				possibleCharacters.Remove(previousBelow);
 
 				
-
 				Sprite newSprite = possibleCharacters[Random.Range(0, possibleCharacters.Count)];
 
 				newTile.GetComponent<SpriteRenderer>().sprite = newSprite;
@@ -60,7 +76,7 @@ public class BoardManager : MonoBehaviour {
 			}
 		}
     }
-
+	
 	public IEnumerator FindNullTiles()
 	{
 		for (int x = 0; x < xSize; x++)
@@ -115,6 +131,13 @@ public class BoardManager : MonoBehaviour {
 			{ 
 				renders[k].sprite = renders[k + 1].sprite;
 				renders[k + 1].sprite = GetNewSprite(x, ySize - 1);
+
+				//movimiento
+				GameObject origen = renders[k + 1].gameObject;
+				GameObject destino = renders[k].gameObject;
+				GameObject newTile = Instantiate(origen, origen.transform.position, origen.transform.rotation);
+				newTile.transform.DOMove(destino.transform.position, 0.2f).OnComplete(() => { Destroy(newTile); });
+
 			}
 		}
 		IsShifting = false;
@@ -123,7 +146,16 @@ public class BoardManager : MonoBehaviour {
 	private Sprite GetNewSprite(int x, int y)
 	{
 		List<Sprite> possibleCharacters = new List<Sprite>();
-		possibleCharacters.AddRange(characters);
+		
+		if (GUIManager.instance.charactersUnlocked <= characters.Count)
+		{
+			possibleCharacters.AddRange(characters.GetRange(0, GUIManager.instance.charactersUnlocked));
+		}
+		else
+		{
+			possibleCharacters.AddRange(characters);
+		}
+
 
 		if (x > 0)
 		{
@@ -149,7 +181,9 @@ public class BoardManager : MonoBehaviour {
 		{
 			for (int y = 0; y < ySize; y++)
 			{
-				tiles[x, y].GetComponent<SpriteRenderer>().color = Color.white;
+				tiles[x,y].gameObject.GetComponent<SpriteRenderer>().material.DOKill();
+				tiles[x,y].gameObject.GetComponent<SpriteRenderer>().material.DOColor(Color.white, 1f);
+
 			}
 		}
 	}

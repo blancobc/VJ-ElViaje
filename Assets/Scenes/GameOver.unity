@@ -193,7 +193,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: ...
+  m_Text: R2D2...
 --- !u!222 &100435413
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -234,7 +234,7 @@ RectTransform:
   m_Children:
   - {fileID: 1334058394}
   m_Father: {fileID: 1630870146}
-  m_RootOrder: 10
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -403,7 +403,7 @@ GameObject:
   - component: {fileID: 544864780}
   - component: {fileID: 544864779}
   m_Layer: 5
-  m_Name: HighScore
+  m_Name: MyHighScore
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -421,11 +421,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1630870146}
-  m_RootOrder: 9
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -340}
+  m_AnchoredPosition: {x: 0, y: -320}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &544864779
@@ -456,7 +456,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.91372555, g: 0.25882354, b: 0.34117648, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -465,7 +465,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 1466810ba7010594998a3428d52efaed, type: 3}
-    m_FontSize: 54
+    m_FontSize: 40
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -476,7 +476,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'Mejor: 0'
+  m_Text: '-'
 --- !u!222 &544864781
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -701,8 +701,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   getNamePanel: {fileID: 218368944}
-  yourScoreTxt: {fileID: 1545625033}
-  highScoreTxt: {fileID: 544864780}
+  myScore: {fileID: 1545625033}
+  myHighScore: {fileID: 544864780}
   nameTxt: {fileID: 752163756}
 --- !u!4 &876718872
 Transform:
@@ -963,11 +963,11 @@ RectTransform:
   m_LocalScale: {x: 0.5925926, y: 0.5925926, z: 0.5925926}
   m_Children: []
   m_Father: {fileID: 1630870146}
-  m_RootOrder: 5
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 120}
+  m_AnchoredPosition: {x: 0, y: 150}
   m_SizeDelta: {x: 800, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1253081352
@@ -1119,11 +1119,11 @@ RectTransform:
   m_LocalScale: {x: 0.5925926, y: 0.5925926, z: 0.5925926}
   m_Children: []
   m_Father: {fileID: 1630870146}
-  m_RootOrder: 6
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 80}
+  m_AnchoredPosition: {x: 0, y: 100}
   m_SizeDelta: {x: 800, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1520103454
@@ -1181,7 +1181,7 @@ GameObject:
   - component: {fileID: 1545625033}
   - component: {fileID: 1545625032}
   m_Layer: 5
-  m_Name: YourScore
+  m_Name: MyScore
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1199,7 +1199,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1630870146}
-  m_RootOrder: 8
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
@@ -1243,7 +1243,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 1466810ba7010594998a3428d52efaed, type: 3}
-    m_FontSize: 100
+    m_FontSize: 60
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
@@ -1516,7 +1516,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 224000013999541568, guid: 5c55d6b169136be438c65bd97e4f3a67, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -100
+      value: -110
+      objectReference: {fileID: 0}
+    - target: {fileID: 8693107264278239323, guid: 5c55d6b169136be438c65bd97e4f3a67, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8693107264278239323, guid: 5c55d6b169136be438c65bd97e4f3a67, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8693107264278239323, guid: 5c55d6b169136be438c65bd97e4f3a67, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -580
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5c55d6b169136be438c65bd97e4f3a67, type: 3}
@@ -1555,11 +1567,11 @@ RectTransform:
   m_LocalScale: {x: 0.5925926, y: 0.5925926, z: 0.5925926}
   m_Children: []
   m_Father: {fileID: 1630870146}
-  m_RootOrder: 7
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 40}
+  m_AnchoredPosition: {x: 0, y: 50}
   m_SizeDelta: {x: 800, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1773547832
@@ -1690,7 +1702,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Introduce tu nombre
+  m_Text: "\xBF ... ?"
 --- !u!222 &1800251785
 CanvasRenderer:
   m_ObjectHideFlags: 0

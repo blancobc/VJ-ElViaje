@@ -8,8 +8,8 @@ public class GameOverScreen : MonoBehaviour
 
 	public GameObject getNamePanel;
 
-	public Text yourScoreTxt;
-	public Text highScoreTxt;
+	public Text myScore;
+	public Text myHighScore;
 	public Text nameTxt;
 
 	private int score;
@@ -32,20 +32,19 @@ public class GameOverScreen : MonoBehaviour
 	public void pintarPuntuaciones() {
 		// puntuacion actual
 		score = PlayerPrefs.GetInt("Score");
-		yourScoreTxt.text = score.ToString();
+		myScore.text = score.ToString();
 
 		// puntuacion maxima
 		if (score > PlayerPrefs.GetInt("HighScore"))
 		{
 			PlayerPrefs.SetInt("HighScore", score);
-			highScoreTxt.text = "Nuevo record: " + PlayerPrefs.GetInt("HighScore").ToString();
-
-
 		}
-		else
-		{
-			highScoreTxt.text = "Mejor: " + PlayerPrefs.GetInt("HighScore").ToString();
-		}
+
+		myHighScore.text =
+			PlayerPrefs.GetString("name") +
+			" - " +
+			PlayerPrefs.GetInt("HighScore").ToString();
+
 	}
 
 	public void anadirDreamlo() {

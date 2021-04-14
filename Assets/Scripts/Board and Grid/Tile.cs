@@ -6,6 +6,7 @@ using DG.Tweening;
 
 public class Tile : MonoBehaviour
 {
+	public int x,y;
 
 	private static Tile previousSelected = null;
 
@@ -29,7 +30,10 @@ public class Tile : MonoBehaviour
 		foreach (GameObject ob in adjacents)
 		{
 			if (ob != null)
-				ob.GetComponent<SpriteRenderer>().color = BoardManager.instance.adjacentColor;
+            {
+				ob.GetComponent<SpriteRenderer>().material.DOColor(BoardManager.instance.adjacentColor, 5f);
+            }
+
 		}
 
 		previousSelected = gameObject.GetComponent<Tile>();
@@ -69,6 +73,7 @@ public class Tile : MonoBehaviour
 				if (GetAllAdjacentTiles().Contains(previousSelected.gameObject))
 				{
 					SwapSprite(previousSelected.render);
+					//Swap(previousSelected, this.GetComponent<Tile>());
 
 					previousSelected.ClearAllMatches();
 					previousSelected.Deselect();
@@ -87,21 +92,32 @@ public class Tile : MonoBehaviour
 
 	}
 
-	public void SwapSprite(SpriteRenderer render2)
+	public void SwapSprite(SpriteRenderer previousSelectedRender)
 	{
-		if (render.sprite == render2.sprite)
+		if (render.sprite == previousSelectedRender.sprite)
 		{
 			return;
 		}
 
-		//transform.DOShakePosition(0.2f);
-		//render2.transform.DOShakePosition(0.2f);
+		GameObject newTile = Instantiate(previousSelectedRender.gameObject, previousSelectedRender.transform.position, previousSelectedRender.transform.rotation);
+		newTile.transform.DOMove(render.transform.position,0.2f).OnComplete(() => { Destroy(newTile); });
 
-		Sprite tempSprite = render2.sprite;
-		render2.sprite = render.sprite;
+		Sprite tempSprite = previousSelectedRender.sprite;
+		previousSelectedRender.sprite = render.sprite;
 		render.sprite = tempSprite;
 
 		SFXManager.instance.PlaySFX(Clip.Swap);
+	}
+
+	//intento fallido porque pilla las casillas por el raycast y aun no estan colocadas
+	public void Swap(Tile origen, Tile destino) {
+		Tile tmp = destino;
+
+		BoardManager.instance.tiles[destino.x, destino.y] = BoardManager.instance.tiles[origen.x, origen.y];
+		BoardManager.instance.tiles[origen.x, origen.y] = BoardManager.instance.tiles[tmp.x, tmp.y];
+
+		origen.transform.DOMove(destino.transform.position, 1f);
+		destino.transform.DOMove(origen.transform.position, 1f);
 	}
 
 	private GameObject GetAdjacent(Vector2 castDir)
@@ -147,7 +163,14 @@ public class Tile : MonoBehaviour
 		{
 			for (int i = 0; i < matchingTiles.Count; i++)
 			{
-				matchingTiles[i].GetComponent<SpriteRenderer>().sprite = null;	
+				//movimiento
+				GameObject origen = matchingTiles[i].gameObject;
+				GameObject newTile = Instantiate(origen, origen.transform.position, origen.transform.rotation);
+				//newTile.transform.DOShakeScale(1f).OnComplete(() => { Destroy(newTile); });
+				newTile.transform.DOPunchScale(new Vector3(0.2f,0.2f,0.2f),1f).OnComplete(() => { Destroy(newTile); });
+
+				matchingTiles[i].GetComponent<SpriteRenderer>().sprite = null;
+
 			}
 			matchFound = true;
 		}
