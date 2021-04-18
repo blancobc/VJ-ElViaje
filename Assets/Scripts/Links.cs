@@ -6,6 +6,7 @@ public class Links : MonoBehaviour
 {
     public void abrirUrlVerkami()
     {
+        PlayerPrefs.SetInt("amigo", 1);
         Application.OpenURL("https://www.verkami.com/projects/29559-el-viaje-un-cuento-para-bebes");
     }
 

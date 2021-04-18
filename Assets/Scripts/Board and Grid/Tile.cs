@@ -31,7 +31,7 @@ public class Tile : MonoBehaviour
 		{
 			if (ob != null)
             {
-				ob.GetComponent<SpriteRenderer>().material.DOColor(BoardManager.instance.adjacentColor, 5f);
+				ob.GetComponent<SpriteRenderer>().material.DOColor(BoardManager.instance.adjacentColor, 2f);
             }
 
 		}
@@ -99,7 +99,11 @@ public class Tile : MonoBehaviour
 			return;
 		}
 
-		GameObject newTile = Instantiate(previousSelectedRender.gameObject, previousSelectedRender.transform.position, previousSelectedRender.transform.rotation);
+		//efecto de movimiento
+		GameObject newTile = Instantiate(
+			BoardManager.instance.tileMover,
+			previousSelectedRender.transform.position,
+			previousSelectedRender.transform.rotation);
 		newTile.transform.DOMove(render.transform.position,0.2f).OnComplete(() => { Destroy(newTile); });
 
 		Sprite tempSprite = previousSelectedRender.sprite;
@@ -166,8 +170,8 @@ public class Tile : MonoBehaviour
 				//movimiento
 				GameObject origen = matchingTiles[i].gameObject;
 				GameObject newTile = Instantiate(origen, origen.transform.position, origen.transform.rotation);
-				//newTile.transform.DOShakeScale(1f).OnComplete(() => { Destroy(newTile); });
-				newTile.transform.DOPunchScale(new Vector3(0.2f,0.2f,0.2f),1f).OnComplete(() => { Destroy(newTile); });
+				//newTile.transform.DOShakeScale(0.4f,0.5f,5).OnComplete(() => { Destroy(newTile); });
+				newTile.transform.DOPunchScale(new Vector3(0.1f,0.1f,0.1f),0.4f).OnComplete(() => { Destroy(newTile); });
 
 				matchingTiles[i].GetComponent<SpriteRenderer>().sprite = null;
 

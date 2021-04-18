@@ -16,15 +16,19 @@ public class GameOverScreen : MonoBehaviour
 
 	void Start()
 	{
-		pintarPuntuaciones();
 
 		//PlayerPrefs.DeleteAll();
 		// obtener el nombre del jugador
 		string name = PlayerPrefs.GetString("name");
-		
+
 		// pedimos el nombre si no lo tenemos
-		if (string.IsNullOrEmpty(name)) { getNamePanel.SetActive(true); }
-		else { anadirDreamlo(); }
+		if (string.IsNullOrEmpty(name)) {
+			getNamePanel.SetActive(true);
+		}
+
+		else{
+			pintarPuntuaciones();
+		}
 
 	}
 
@@ -38,6 +42,7 @@ public class GameOverScreen : MonoBehaviour
 		if (score > PlayerPrefs.GetInt("HighScore"))
 		{
 			PlayerPrefs.SetInt("HighScore", score);
+			anadirDreamlo();
 		}
 
 		myHighScore.text =
@@ -55,7 +60,7 @@ public class GameOverScreen : MonoBehaviour
 	{
 		PlayerPrefs.SetString("name", nameTxt.text);
 		getNamePanel.SetActive(false);
-		anadirDreamlo();
+		pintarPuntuaciones();
 	}
 
 

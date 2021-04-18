@@ -7,9 +7,9 @@ using DG.Tweening;
 public class BoardManager : MonoBehaviour {
 	public static BoardManager instance;
 	public List<Sprite> characters = new List<Sprite>();
-	public GameObject tile;
+	public GameObject tile, tileMover;
 	public int xSize, ySize;
-
+	
 	public Color selectedColor = new Color(.5f, .5f, .5f, 1.0f);
 	public Color adjacentColor = new Color(.5f, .5f, .5f, 1.0f);
 
@@ -24,17 +24,9 @@ public class BoardManager : MonoBehaviour {
 		GameManager.instance.gameOver = false;
 		Vector2 offset = tile.GetComponent<SpriteRenderer>().bounds.size;
 		CreateBoard(offset.x, offset.y);
-
-		InvokeRepeating("LimpiarNulos", 2f, 1f);
-
-
-    }
-
-	private void LimpiarNulos() {
-		StopCoroutine(BoardManager.instance.FindNullTiles());
-		StartCoroutine(BoardManager.instance.FindNullTiles());
 	}
 
+    
 	private void CreateBoard (float xOffset, float yOffset)
 	{
 		tiles = new GameObject[xSize, ySize];
@@ -55,13 +47,7 @@ public class BoardManager : MonoBehaviour {
 				newTile.transform.parent = transform;
 
 				List<Sprite> possibleCharacters = new List<Sprite>();
-                if (GUIManager.instance.charactersUnlocked <= characters.Count) { 
-					possibleCharacters.AddRange(characters.GetRange(0, GUIManager.instance.charactersUnlocked));
-				}
-				else { 
-					possibleCharacters.AddRange(characters);
-				}
-
+                possibleCharacters.AddRange(characters);
 				possibleCharacters.Remove(previousLeft[y]); 
 				possibleCharacters.Remove(previousBelow);
 
@@ -133,11 +119,12 @@ public class BoardManager : MonoBehaviour {
 				renders[k + 1].sprite = GetNewSprite(x, ySize - 1);
 
 				//movimiento
+				/*
 				GameObject origen = renders[k + 1].gameObject;
 				GameObject destino = renders[k].gameObject;
 				GameObject newTile = Instantiate(origen, origen.transform.position, origen.transform.rotation);
 				newTile.transform.DOMove(destino.transform.position, 0.2f).OnComplete(() => { Destroy(newTile); });
-
+				*/
 			}
 		}
 		IsShifting = false;
@@ -146,16 +133,7 @@ public class BoardManager : MonoBehaviour {
 	private Sprite GetNewSprite(int x, int y)
 	{
 		List<Sprite> possibleCharacters = new List<Sprite>();
-		
-		if (GUIManager.instance.charactersUnlocked <= characters.Count)
-		{
-			possibleCharacters.AddRange(characters.GetRange(0, GUIManager.instance.charactersUnlocked));
-		}
-		else
-		{
-			possibleCharacters.AddRange(characters);
-		}
-
+		possibleCharacters.AddRange(characters);
 
 		if (x > 0)
 		{
